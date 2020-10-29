@@ -1,0 +1,207 @@
+#signin_banner {
+  background:url("../images/night-city.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#signin_form {
+	width: 26em;
+	height: auto;
+	background-color: #fff;
+	margin: 0 auto;
+	padding-bottom: 17px;
+	position: relative;
+	top: 10em;
+}
+
+.signin_form_header {
+	background-color: violet;
+	width: 17.5em;
+	height: 109px;
+	margin: 0 auto;
+	padding-bottom: 0;
+}
+
+.signin_form_header p:nth-child(1) {
+	font-size: 42px;
+	color: #fff;
+	font-family: 'Open Sans';
+  font-weight: 400;
+  line-height: 50px;
+  padding-top: 5px;
+}
+
+.signin_form_header p:last-child {
+	font-size: 42px;
+	color: #fff;
+	font-family: 'Open Sans';
+  font-weight: 400;
+}
+
+.signin_form_username {
+  margin-left: 38px;
+}
+
+.signin_form_username label {
+   display: flex;
+   justify-content: flex-start;
+   font-size: 13px;
+   font-family: 'Open Sans';
+   font-weight: 400;
+   margin-top: 16px;
+   line-height: 5px;
+}
+
+.signin_form_username input {
+   width: 183px;
+   height: 20px;
+   font-size: 15px;
+   border: 1px solid #999;
+   border-radius: 4px;
+}
+
+.signin_form_username input:focus {
+   outline-width: 0;
+}
+
+.signin_form_email {
+  margin-left: 38px;
+}
+
+.signin_form_email label {
+   display: flex;
+   justify-content: flex-start;
+   font-size: 13px;
+   font-family: 'Open Sans';
+   font-weight: 400;
+   margin-top: 16px;
+   line-height: 5px;
+}
+
+.signin_form_email input {
+   width: 183px;
+   height: 20px;
+   font-size: 15px;
+   border: 1px solid #999;
+   border-radius: 4px;
+}
+
+.signin_form_email input:focus {
+   outline-width: 0;
+}
+
+.signin_form_password {
+  margin-left: 38px;
+}
+
+.signin_form_password label {
+   display: flex;
+   justify-content: flex-start;
+   font-size: 13px;
+   font-family: 'Open Sans';
+   font-weight: 400;
+   margin-top: 16px;
+   line-height: 5px;
+}
+
+.signin_form_password input {
+  width: 183px;
+  height: 20px;
+  font-size: 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.signin_form_password input:focus {
+  outline-width: 0;
+}
+
+#signin_text {
+  font-size: 18px;
+  border-bottom: 1px solid blue;
+  margin: 0 auto;
+  position: relative;
+  top: 5px;
+  width: 213px;
+  color: blue;
+}
+
+#signin_btn {
+  margin-top: 30px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  width: 213px;
+  margin: 13px 0 0 24px;
+  color: #fff;
+  background-color: #0064ff;
+}
+
+.login_text {
+  font-size: 13px;
+  margin: 11px 0 0 36px;
+}
+
+#login_link {
+	color: #a590ff;
+	text-decoration:none; 
+	list-style-type: none;
+}
+
+.result-message {
+  font-size: 14px;
+}
+
+.indicator {
+  display: none;
+  font-size: 13px;
+}
+
+#err_user {
+  color: red;
+  font-size: 11px;
+  margin: 3px 0 0 2px;
+}
+
+#err_mail {
+  color: red;
+  font-size: 11px;
+  margin: 3px 0 0 2px;
+}
+
+#err_pass {
+  color: red;
+  font-size: 11px;
+  margin: 3px 0 0 2px;
+}
+
+#signin_username-error {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0 0 2px;
+}
+
+#signin_email-error {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0 0 2px;
+}
+
+#signin_password-error {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0 0 2px;
+}

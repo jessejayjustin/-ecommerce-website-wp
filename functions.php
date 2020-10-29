@@ -154,47 +154,35 @@ function bootstrapstarter_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_styles' );
 add_action( 'wp_enqueue_scripts', 'bootstrapstarter_enqueue_scripts' );
 
-function custom_css_styles() {
+function signin_page_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/css/custom.css' ); // our stylesheet
+    wp_enqueue_style( 'signin-page-style', get_template_directory_uri() . '/css/signin.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'custom_css_styles' );
+add_action( 'wp_enqueue_scripts', 'signin_page_css_styles');
 
-function about_page_css_styles() {
+function login_page_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'about-page-style', get_template_directory_uri() . '/css/about-page.css' ); // our stylesheet
+    wp_enqueue_style( 'login-page-style', get_template_directory_uri() . '/css/login.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'about_page_css_styles');
+add_action( 'wp_enqueue_scripts', 'login_page_css_styles');
 
-function contact_page_css_styles() {
+function forgot_pass_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'contact-page-style', get_template_directory_uri() . '/css/contact-page.css' ); // our stylesheet
+    wp_enqueue_style( 'forgot-pass-page-style', get_template_directory_uri() . '/css/forgot-pass.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'contact_page_css_styles');
+add_action( 'wp_enqueue_scripts', 'forgot_pass_css_styles');
 
-function wan_services_page_styles() {
+function reset_pass_page_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'wan-services-page-style', get_template_directory_uri() . '/css/wan-page.css' ); // our stylesheet
+    wp_enqueue_style( 'reset-pass-page-style', get_template_directory_uri() . '/css/reset-setting-pass.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'wan_services_page_styles');
+add_action( 'wp_enqueue_scripts', 'reset_pass_page_css_styles');
 
-function colocation_services_page_styles() {
+function home_page_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'colocation-services-page-style', get_template_directory_uri() . '/css/colocation-page.css' ); // our stylesheet
+    wp_enqueue_style( 'home-page-style', get_template_directory_uri() . '/css/home-page.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'colocation_services_page_styles');
-
-function global_services_page_styles() {
-	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'global-services-page-style', get_template_directory_uri() . '/css/global-page.css' ); // our stylesheet
-}
-add_action( 'wp_enqueue_scripts', 'global_services_page_styles');
-
-function internet_services_page_styles() {
-	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'internet-services-page-style', get_template_directory_uri() . '/css/internet-page.css' ); // our stylesheet
-}
-add_action( 'wp_enqueue_scripts', 'internet_services_page_styles');
+add_action( 'wp_enqueue_scripts', 'home_page_css_styles');
 
 
 function wpb_custom_new_menu() {
@@ -227,12 +215,6 @@ class AWP_Menu_Walker extends Walker_Nav_Menu {
 	}
 }
 
-function my_theme_scripts() {
-    wp_enqueue_script('my-great-script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0.0', true);
-}
-
-add_action('wp_enqueue_scripts', 'my_theme_scripts');
-
 /* Custom script with no dependencies, enqueued in the footer */
 add_action('wp_enqueue_scripts', 'enqueue_jquery_validate');
 function enqueue_jquery_validate() {
@@ -244,6 +226,182 @@ add_action('wp_enqueue_scripts', 'enqueue_verify_js');
 function enqueue_verify_js() {
     wp_enqueue_script('verify', get_stylesheet_directory_uri().'/js/verify.js', 
     array(), false, true);
+}
+
+function ajax_login_init(){
+
+    wp_register_script('ajax-login-script', get_template_directory_uri() . '/js/ajax-login-script.js', array('jquery') ); 
+    wp_enqueue_script('ajax-login-script');
+
+    wp_localize_script( 'ajax-login-script', 'ajax_login_object', array( 
+        'ajaxurl' => admin_url( 'admin-ajax.php' )
+    ));
+
+    // Enable the user with no privileges to run ajax_login() in AJAX
+    add_action( 'wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+}
+
+// Execute the action only if the user isn't logged in
+if (!is_user_logged_in()) {
+    add_action('init', 'ajax_login_init');
+}
+
+function ajax_login(){
+
+    // First check the nonce, if it fails the function will break
+    check_ajax_referer( 'ajax-login-nonce', 'security' );
+
+      // Post values
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $error = '';
+
+    if(empty($username)) {
+       $error .= 'Enter Username ';
+    }
+
+    if(empty($password)) {
+       $error .= 'Password should not be blank';
+    }
+
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+    $info['user_login'] = $username;
+    $info['user_password'] = $password;
+    $info['remember'] = true;
+    
+    if(empty($error)) {
+	    $user_signon = wp_signon( $info, false );
+	    if ( is_wp_error($user_signon) ){
+	        echo json_encode(array('loggedin'=>false, 'message'=>__('Wrong username or password.')));
+	    } else {
+	        echo json_encode(array('loggedin'=>true, 'message'=>__('Login successful, redirecting...')));
+	    }
+	} else {
+		echo $error;
+	}
+
+    die();
+}
+
+function signin_user_scripts() {
+  // Enqueue script
+  wp_register_script('signin_reg_script', get_template_directory_uri() . '/js/ajax-signin-script.js', array('jquery'), null, false);
+  wp_enqueue_script('signin_reg_script');
+ 
+  wp_localize_script( 'signin_reg_script', 'signin_reg_vars', array(
+        'signin_ajax_url' => admin_url( 'admin-ajax.php' ),
+      )
+  );
+}
+add_action('wp_enqueue_scripts', 'signin_user_scripts', 100);
+
+/**
+ * New User registration
+ *
+ */
+function ajax_signin_new_user() {
+  // Verify nonce
+  if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'signin_new_user'))
+    die( 'Ooops, something went wrong, please try again later.' );
+
+    //$exists = email_exists($_POST['signin_email']);
+	
+    // Post values
+    $username = $_POST['user'];
+    $email    = $_POST['mail'];
+    $password = $_POST['pass'];
+
+    $error = '';
+
+    if(empty($username)) {
+       $error .= 'Enter Username ';
+    }
+
+    if(empty($email)) {
+       $error .= 'Enter Email Id ';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $error .= 'Enter Valid Email ';
+    }
+
+    if(empty($password)) {
+       $error .= 'Password should not be blank';
+    }
+
+    /*
+    if( false == get_user_by( 'email', $email ) ) {
+        echo "The user doesn't exist";
+    } else {
+         $error .= "The user exists";
+    }
+    */
+
+    $userdata = array(
+        'user_login' => $username,
+        'user_pass'  => $password,
+        'user_email' => $email,
+    );
+
+    if(empty($error) /* || $exists */) {
+	    $user_id = wp_insert_user( $userdata );
+	    // Return
+	    if( !is_wp_error($user_id) ) {
+	        echo '1';
+	    } else {
+	        echo $user_id->get_error_message();
+	    }
+	} else {
+		echo $error;
+		//echo json_encode(array('err'=>true, 'message'=>__($error)));
+	}
+
+  die();
+}
+ 
+add_action('wp_ajax_register_user', 'ajax_signin_new_user');
+add_action('wp_ajax_nopriv_register_user', 'ajax_signin_new_user');
+
+/*
+function forgot_pass_reset_scripts() {
+  // Enqueue script
+  wp_register_script('forgot_pass_script', get_template_directory_uri() . '/js/forgot-pass-reset.js', array('jquery'), null, false);
+  wp_enqueue_script('forgot_pass_script');
+ 
+  wp_localize_script( 'forgot_pass_script', 'forgot_pass_object', array(
+        'forgot_pass_url' => admin_url( 'admin-ajax.php' ),
+      )
+  );
+}
+add_action('wp_enqueue_scripts', 'forgot_pass_reset_scripts', 100);
+
+
+function forgot_password_reset_email() {
+	if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'forgot_pass'))
+    die( 'Ooops, something went wrong, please try again later.' );
+
+    $us = $_POST['usml'];
+
+    if(empty($us)) {
+	  echo '0';
+	} else {
+		echo '1';
+	}
+
+    die();
+}
+
+add_action('wp_ajax_forgot_pass', 'forgot_password_reset_email');
+add_action('wp_ajax_nopriv_forgot_pass', 'forgot_password_reset_email');
+*/
+
+
+add_action('after_setup_theme', 'remove_admin_bar');
+ 
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
 }
 
 /**
@@ -272,4 +430,24 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+add_action("wp_ajax_login_form", "handle_login_form");
+
+function handle_login_form() {
+	print_r($_REQUEST);
+	wp_die();
+}
+
+add_action( 'template_redirect', function() {
+
+    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass-reset') ) {
+
+        if (!is_user_logged_in() ) {
+            wp_redirect( site_url(is_front_page()) );        // redirect all...
+            exit();
+        }
+
+    }
+
+});
 

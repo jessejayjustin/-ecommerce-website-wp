@@ -1,0 +1,62 @@
+.navbar {
+	height: 40px;
+	min-height: 0px;
+	border-radius: 0;
+	background-color: #414141;
+}
+
+.nav-brand {
+    height: 37px;
+    padding-left: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #5e7264;
+}
+
+.navbar-nav li a.navbar-brand {
+	color: #fff;
+	font-size: 14px;
+	margin-top: -4px;
+	margin-right: -5px;
+}
+
+.navbar-nav li a.dropdown-toggle {
+	color: #fff;
+	font-size: 13px;
+	margin-top: -4px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    height: 43px;
+    color: #fff;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a.navbar-brand:focus, .navbar-default .navbar-nav>li>a.navbar-brand:hover {
+    color: #fff;
+	font-size: 14px;
+	margin-top: -4px;
+	margin-right: -5px;
+}
+
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 10px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: -2px;
+    width: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #fff;
+    background-color: transparent;
+}
