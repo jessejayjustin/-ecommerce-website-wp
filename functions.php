@@ -178,11 +178,30 @@ function reset_pass_page_css_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'reset_pass_page_css_styles');
 
-function home_page_css_styles() {
+function home_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'home-page-style', get_template_directory_uri() . '/css/home-page.css' ); // our stylesheet
+    wp_enqueue_style( 'home-style', get_template_directory_uri() . '/css/home.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'home_page_css_styles');
+add_action( 'wp_enqueue_scripts', 'home_css_styles');
+
+function single_product_css_styles() {
+	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
+    wp_enqueue_style( 'single-product-style', get_template_directory_uri() . '/css/single-product.css' ); // our stylesheet
+}
+add_action( 'wp_enqueue_scripts', 'single_product_css_styles');
+
+function cart_css_styles() {
+	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
+    wp_enqueue_style( 'cart-style', get_template_directory_uri() . '/css/cart.css' ); // our stylesheet
+}
+add_action( 'wp_enqueue_scripts', 'cart_css_styles');
+
+function fontawesome_enqueue_styles() {
+    wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
+    wp_enqueue_style( 'fontawesome-style', get_template_directory_uri() . '/fonts/font-awesome.min.css' ); // our stylesheet
+}
+add_action( 'wp_enqueue_scripts', 'fontawesome_enqueue_styles');
+
 
 
 function wpb_custom_new_menu() {
@@ -222,15 +241,45 @@ function enqueue_jquery_validate() {
     array(), false, true);
 }
 
-add_action('wp_enqueue_scripts', 'enqueue_verify_js');
-function enqueue_verify_js() {
-    wp_enqueue_script('verify', get_stylesheet_directory_uri().'/js/verify.js', 
+add_action('wp_enqueue_scripts', 'enqueue_index_js');
+function enqueue_index_js() {
+    wp_enqueue_script('index', get_stylesheet_directory_uri().'/js/index.js', 
+    array(), false, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_product_search');
+function enqueue_product_search() {
+    wp_enqueue_script('product-search', get_stylesheet_directory_uri().'/js/product-search-script.js',
+    array(), false, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_nav_filter');
+function enqueue_nav_filter() {
+    wp_enqueue_script('nav-filter', get_stylesheet_directory_uri().'/js/nav-filter.js',
+    array(), false, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_filter_cat');
+function enqueue_filter_cat() {
+    wp_enqueue_script('filter-cat', get_stylesheet_directory_uri().'/js/filter-cat.js',
+    array(), false, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_cart');
+function enqueue_cart() {
+    wp_enqueue_script('cart', get_stylesheet_directory_uri().'/js/cart.js',
+    array(), false, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_checkout');
+function enqueue_checkout() {
+    wp_enqueue_script('checkout', get_stylesheet_directory_uri().'/js/checkout.js',
     array(), false, true);
 }
 
 function ajax_login_init(){
 
-    wp_register_script('ajax-login-script', get_template_directory_uri() . '/js/ajax-login-script.js', array('jquery') ); 
+    wp_register_script('ajax-login-script', null, null ); 
     wp_enqueue_script('ajax-login-script');
 
     wp_localize_script( 'ajax-login-script', 'ajax_login_object', array( 
@@ -258,11 +307,11 @@ function ajax_login(){
     $error = '';
 
     if(empty($username)) {
-       $error .= 'Enter Username ';
+       $error .= 'username is required';
     }
 
     if(empty($password)) {
-       $error .= 'Password should not be blank';
+       $error .= 'password is required';
     }
 
     // Nonce is checked, get the POST data and sign user on
@@ -287,7 +336,7 @@ function ajax_login(){
 
 function signin_user_scripts() {
   // Enqueue script
-  wp_register_script('signin_reg_script', get_template_directory_uri() . '/js/ajax-signin-script.js', array('jquery'), null, false);
+  wp_register_script('signin_reg_script', null, null, null, false);
   wp_enqueue_script('signin_reg_script');
  
   wp_localize_script( 'signin_reg_script', 'signin_reg_vars', array(
@@ -309,24 +358,24 @@ function ajax_signin_new_user() {
     //$exists = email_exists($_POST['signin_email']);
 	
     // Post values
-    $username = $_POST['user'];
+    $user = $_POST['user'];
     $email    = $_POST['mail'];
     $password = $_POST['pass'];
 
     $error = '';
 
-    if(empty($username)) {
-       $error .= 'Enter Username ';
+    if(empty($user)) {
+       $error .= 'username is required';
     }
 
     if(empty($email)) {
-       $error .= 'Enter Email Id ';
+       $error .= 'email is required';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $error .= 'Enter Valid Email ';
+       $error .= 'enter valid email';
     }
 
     if(empty($password)) {
-       $error .= 'Password should not be blank';
+       $error .= 'password is required';
     }
 
     /*
@@ -338,7 +387,7 @@ function ajax_signin_new_user() {
     */
 
     $userdata = array(
-        'user_login' => $username,
+        'user_login' => $user,
         'user_pass'  => $password,
         'user_email' => $email,
     );
@@ -346,14 +395,13 @@ function ajax_signin_new_user() {
     if(empty($error) /* || $exists */) {
 	    $user_id = wp_insert_user( $userdata );
 	    // Return
-	    if( !is_wp_error($user_id) ) {
-	        echo '1';
+	    if( is_wp_error($user_id) ) {
+	        echo json_encode(array('signin'=>false, 'message'=>__('Ooops, something went wrong, please try again.')));
 	    } else {
-	        echo $user_id->get_error_message();
+	        echo json_encode(array('signin'=>true, 'message'=>__('Signin successful, redirecting...')));
 	    }
 	} else {
-		echo $error;
-		//echo json_encode(array('err'=>true, 'message'=>__($error)));
+		echo json_encode(array('signin'=>false, 'message'=>__($error)));
 	}
 
   die();
@@ -440,7 +488,7 @@ function handle_login_form() {
 
 add_action( 'template_redirect', function() {
 
-    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass-reset') ) {
+    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass-reset') && !is_page('wp-login') ) {
 
         if (!is_user_logged_in() ) {
             wp_redirect( site_url(is_front_page()) );        // redirect all...
@@ -451,3 +499,443 @@ add_action( 'template_redirect', function() {
 
 });
 
+/*
+Our custom post type function
+function create_posttype() {
+ 
+    register_post_type( 'products',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Products' ),
+                'singular_name' => __( 'Product' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'products'),
+            'show_in_rest' => true,
+ 
+        )
+    );
+}
+//Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );
+*/
+
+/*
+* Creating a function to create our CPT
+*/
+/*
+function custom_post_type() {
+ 
+// Set UI labels for Custom Post Type
+    $labels = array(
+        'name'                => _x( 'Products', 'Post Type General Name', 'zack-market' ),
+        'singular_name'       => _x( 'Product', 'Post Type Singular Name', 'zack-market' ),
+        'menu_name'           => __( 'Products', 'zack-market' ),
+        'parent_item_colon'   => __( 'Parent Product', 'zack-market' ),
+        'all_items'           => __( 'All Products', 'zack-market' ),
+        'view_item'           => __( 'View Product', 'zack-market' ),
+        'add_new_item'        => __( 'Add New Product', 'zack-market' ),
+        'add_new'             => __( 'Add New', 'zack-market' ),
+        'edit_item'           => __( 'Edit Product', 'zack-market' ),
+        'update_item'         => __( 'Update Product', 'zack-market' ),
+        'search_items'        => __( 'Search Product', 'zack-market' ),
+        'not_found'           => __( 'Not Found', 'zack-market' ),
+        'not_found_in_trash'  => __( 'Not found in Trash', 'zack-market' ),
+    );
+     
+// Set other options for Custom Post Type
+     
+    $args = array(
+        'label'               => __( 'products', 'zack-market' ),
+        'description'         => __( 'Product categories', 'zack-market' ),
+        'labels'              => $labels,
+        // Features this CPT supports in Post Editor
+        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+        // You can associate this CPT with a taxonomy or custom taxonomy. 
+        'taxonomies'          => array( 'category' ),
+        /* A hierarchical CPT is like Pages and can have
+        * Parent and child items. A non-hierarchical CPT
+        * is like Posts.
+        
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'menu_position'       => 5,
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post',
+        'show_in_rest' => true,
+ 
+    );
+     
+    // Registering your Custom Post Type
+    register_post_type( 'products', $args );
+ 
+}
+ 
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+
+ 
+add_action( 'init', 'custom_post_type', 0 );
+*/
+
+//hook into the init action and call create_price_taxonomies when it fires
+ 
+add_action( 'init', 'create_price_hierarchical_taxonomy', 0 );
+ 
+//create a custom taxonomy name it class for your posts
+ 
+function create_price_hierarchical_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Price', 'taxonomy general name' ),
+    'singular_name' => _x( 'Pr', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Price' ),
+    'all_items' => __( 'All Price' ),
+    'parent_item' => __( 'Parent Pr' ),
+    'parent_item_colon' => __( 'Parent Pr:' ),
+    'edit_item' => __( 'Edit Pr' ), 
+    'update_item' => __( 'Update Pr' ),
+    'add_new_item' => __( 'Add New Pr' ),
+    'new_item_name' => __( 'New Pr Name' ),
+    'menu_name' => __( 'Price' ),
+  );    
+ 
+// Now register the taxonomy
+  register_taxonomy('price',array('product'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_in_rest' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'pr' ),
+  ));
+ 
+}
+
+//hook into the init action and call create_cat_taxonomies when it fires
+ 
+add_action( 'init', 'create_cat_hierarchical_taxonomy', 0 );
+ 
+//create a custom taxonomy name it class for your posts
+ 
+function create_cat_hierarchical_taxonomy() {
+ 
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+ 
+  $labels = array(
+    'name' => _x( 'Cats', 'taxonomy general name' ),
+    'singular_name' => _x( 'Cat', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Cats' ),
+    'all_items' => __( 'All Cats' ),
+    'parent_item' => __( 'Parent Cat' ),
+    'parent_item_colon' => __( 'Parent Cat:' ),
+    'edit_item' => __( 'Edit Cat' ), 
+    'update_item' => __( 'Update Cat' ),
+    'add_new_item' => __( 'Add New Cat' ),
+    'new_item_name' => __( 'New Cat Name' ),
+    'menu_name' => __( 'Cats' ),
+  );    
+ 
+// Now register the taxonomy
+  register_taxonomy('cats',array('product'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_in_rest' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'cat' ),
+  ));
+ 
+}
+
+function ajax_search_scripts() {
+  // Enqueue script
+  wp_register_script('ajax-search-script', null, null, null, false);
+  wp_enqueue_script('ajax-search-script');
+ 
+  wp_localize_script( 'ajax-search-script', 'ajax_search_vars', array( 
+    'ajax_search_url' => admin_url( 'admin-ajax.php' )
+  ));
+}
+add_action('wp_enqueue_scripts', 'ajax_search_scripts', 100);
+
+function ajax_search() {
+
+    global $wpdb;
+
+    if(!empty($_POST['search'])) {
+       $search = trim($_POST['search']);
+    } else {
+        return null;
+    }
+    
+    /*
+    if(preg_match("/\b(jeans|jackets)\b/ui", strtolower($search) )) {
+      $term = $search;
+    } else if(preg_match("/\b(men|women)\b/ui", strtolower($search) )) {
+      $term = $search;
+    } else {
+      $term = '';
+    }
+    
+    //$tax_query = array();
+    $tax_query[] = array(
+        'taxonomy' => 'category',
+        'field' => 'slug',
+        'terms' => 'Men'
+    );
+    */
+    $args = array(
+        'post_type' => 'products',
+        'posts_per_page' => -1,
+        //'tax_query' => $tax_query,
+        's' => $search
+    );
+
+    $query = new WP_Query($args);
+    
+    /*
+    $t = $wpdb->get_results(" SELECT name FROM ".$wpdb->prefix."terms WHERE name LIKE '%".$search."%'  ");
+
+    $at = array();
+
+    if($t) {
+        foreach($t as $trm) { 
+            $at[] = array(
+                'term' => $trm->name,
+            );
+        }
+    }
+    */
+    /*
+    $args = array(
+        'taxonomy'      => array('category', 'class'), // taxonomy name
+        'orderby'       => 'id', 
+        'order'         => 'ASC',
+        'hide_empty'    => false,
+        'fields'        => 'all',
+        'operator'    => 'LIKE',
+        'search'    => $search
+    ); 
+
+    $search_query = get_terms( $args );
+    
+    $termsArr = array();
+    if ( $search_query ) {
+        foreach($search_query as $term) { 
+            $termsArr[] = array(
+                'term' => $term->name,
+            );
+        }
+    } 
+    */
+    if($query->have_posts()) {
+
+        $results = array();
+
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            //$terms = strip_tags( get_the_category_list(", ") );
+            $results[] = array(
+                "id" => get_the_ID(),
+                "title" => get_the_title()
+                //"terms" =>  $termsArr
+            );
+        }
+        wp_reset_query();
+
+        echo json_encode($results);
+
+    } else {
+        echo 0;
+    }
+
+    wp_die();
+}
+
+add_action('wp_ajax_search', 'ajax_search');
+add_action('wp_ajax_nopriv_search', 'ajax_search');
+
+
+add_action('init', 'myStartSession', 1);
+function myStartSession() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+
+remove_filter('the_content', 'wpautop');
+/*
+add_action ('wp_loaded', 'my_custom_redirect');
+function my_custom_redirect() {
+    if ( empty($_SESSION["checkout_cart"])  ) {
+       
+        wp_redirect(home_url());
+        exit;
+    }
+}     
+*/
+
+##### WOOCOMMERCE #####
+
+// Display Fields
+add_action('woocommerce_product_options_general_product_data', 'woocommerce_product_custom_fields');
+// Save Fields
+add_action('woocommerce_process_product_meta', 'woocommerce_product_custom_fields_save');
+
+function woocommerce_product_custom_fields()
+{
+    global $woocommerce, $post;
+    echo '<div class="product_custom_field">';
+    // Custom Product Text Field
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_color',
+            'placeholder' => 'Color',
+            'label' => __('Color', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    /*
+    //Custom Product Number Field
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_custom_product_number_field',
+            'placeholder' => 'Custom Product Number Field',
+            'label' => __('Custom Product Number Field', 'woocommerce'),
+            'type' => 'number',
+            'custom_attributes' => array(
+                'step' => 'any',
+                'min' => '0'
+            )
+        )
+    );
+    //Custom Product  Textarea
+    woocommerce_wp_textarea_input(
+        array(
+            'id' => '_custom_product_textarea',
+            'placeholder' => 'Custom Product Textarea',
+            'label' => __('Custom Product Textarea', 'woocommerce')
+        )
+    );
+    */
+    echo '</div>';
+}
+
+function woocommerce_product_custom_fields_save($post_id)
+{
+    // Custom Product Text Field
+    $woocommerce_custom_product_text_field = $_POST['_color'];
+    if (!empty($woocommerce_custom_product_text_field))
+        update_post_meta($post_id, '_color', esc_attr($woocommerce_custom_product_text_field));
+/*
+// Custom Product Number Field
+    $woocommerce_custom_product_number_field = $_POST['_custom_product_number_field'];
+    if (!empty($woocommerce_custom_product_number_field))
+        update_post_meta($post_id, '_custom_product_number_field', esc_attr($woocommerce_custom_product_number_field));
+// Custom Product Textarea Field
+    $woocommerce_custom_procut_textarea = $_POST['_custom_product_textarea'];
+    if (!empty($woocommerce_custom_procut_textarea))
+        update_post_meta($post_id, '_custom_product_textarea', esc_html($woocommerce_custom_procut_textarea));
+*/
+}
+
+/**
+ * @snippet       Automatically Update Cart on Quantity Change - WooCommerce
+ * @how-to        Watch tutorial @ https://businessbloomer.com/?p=19055
+ * @sourcecode    https://businessbloomer.com/?p=73470
+ * @author        Rodolfo Melogli
+ * @compatible    Woo 3.4
+ */
+
+add_action( 'wp_footer', 'ava_cart_refresh_update_qty', 9999 ); 
+function ava_cart_refresh_update_qty() { 
+    if (is_cart()) { 
+        ?> 
+        <script type="text/javascript">
+        (function($) {
+            var triggerUpdate = function() {
+                $('.qib-container').on('click', '.qty, .plus, .minus', function(){ 
+                    console.log('test');
+                    $("button[name='update_cart']").trigger("click");
+                });
+            }
+
+            triggerUpdate();
+           
+            $(document).ajaxComplete(function() {
+                triggerUpdate();
+            });
+
+        })(jQuery);
+        </script> 
+        <?php 
+    } 
+}
+
+function get_custom_post_type_template($single_template) {
+ global $post;
+
+ if ($post->post_type == 'product') {
+      $single_template = dirname( __FILE__ ) . './woocommerce/single-template.php';
+ }
+ return $single_template;
+}
+add_filter( 'single_template', 'get_custom_post_type_template' );
+
+
+/**
+ * Here we are trying to add your custom data as Cart Line Item
+ * SO that we can add this custom data on your cart, checkout, order and email later
+ */
+function save_custom_data( $cart_item_data, $product_id ) {
+    $custom_data = get_post_meta( $product_id, '_gram', true );
+    if( $custom_data != null && $custom_data != ""  ) {
+        $cart_item_data["gram"] = $custom_data;
+    }
+    return $cart_item_data;
+}
+add_filter( 'woocommerce_add_cart_item_data', 'save_custom_data', 10, 2 );
+
+/**
+ * Here we are trying to display that custom data on Cart Table & Checkout Order Review Table 
+ */
+function render_custom_data_on_cart_checkout( $cart_data, $cart_item = null ) {
+    $custom_items = array();
+    /* Woo 2.4.2 updates */
+    if( !empty( $cart_data ) ) {
+        $custom_items = $cart_data;
+    }
+    if( isset( $cart_item["gram"] ) ) {
+        $custom_items[] = array( "name" => "Gram", "value" => $cart_item["gram"] );
+    }
+    return $custom_items;
+}
+add_filter( 'woocommerce_get_item_data', 'render_custom_data_on_cart_checkout', 10, 2 );
+
+/**
+ * We are adding that custom data ( gram ) as Order Item Meta, 
+ * which will be carried over to EMail as well 
+ */
+function save_custom_order_meta( $item_id, $values, $cart_item_key ) {
+    if( isset( $values["gram"] ) ) {
+        wc_add_order_item_meta( $item_id, "Gram", $values["gram"] );
+    }
+}
+add_action( 'woocommerce_add_order_item_meta', 'save_custom_order_meta', 10, 3 );

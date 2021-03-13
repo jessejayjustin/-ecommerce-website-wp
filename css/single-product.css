@@ -1,0 +1,245 @@
+.woocommerce-breadcrumb {
+	display: none;
+}
+
+.woocommerce-product-gallery__trigger {
+	display: none;
+}
+
+.postid-406 {
+    background-color: #f6f6f6 !important;
+}
+
+.postid-417 {
+	background-color: #f6f6f6 !important;
+}
+
+.woocommerce-product-gallery__image {
+	width: 92%;
+    height: 75rem;
+    margin: 0px 0px 0px 55px;
+    margin-bottom: 50px;
+}
+
+.product-template-default .postid-406 {
+	background-color: #f6f6f6;
+}
+
+.wcpa_form_outer .wcpa_form_item .select {
+	width: 50% !important;
+}
+
+.product {
+    position: relative;
+    top: 24px;
+    left: 0px !important;
+}
+
+.woocommerce-tabs {
+	display: none;
+}
+
+.summary {
+	position: relative;
+	top: -15px !important;
+	right: 65px;
+    height: 47rem;
+    background-color: #fff;
+}
+
+.woocommerce div.product .product_title {
+    clear: none;
+    margin-top: 0;
+    padding: 15px;
+    font-size: 27px;
+	color: #0055ff;
+	font-family: 'Noto Sans';
+}
+
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+    float: right;
+    width: 43% !important;
+    clear: none;
+}
+
+.product-des {
+	font-size: 16px;
+	padding: 16px;
+	color: #848280;
+	margin-top: -38px;
+}
+
+div.quantity {
+	display: block;
+}
+
+.screen-reader-text {
+	display: none !important;
+}
+
+.price {
+	margin-top: -38px;
+	padding: 15px !important;
+    font-size: 27px !important;
+	color: #0055ff !important;
+    font-family: 'Noto Sans';
+}
+
+#pa_sizes {
+	color: #fff;
+	font-size: 10px;
+	background-color: #333;
+}
+
+.dotted {
+	border:none;
+	border-top:2px dotted #999;
+	color:#fff;
+	background-color:#fff;
+	height:1px;
+	width:100%;
+}
+
+.colour {
+	color: #333;
+	padding: 10px 16px;
+	font-size: 18px;
+	font-family: 'Noto Sans';
+	text-transform: uppercase;
+}
+
+.sp-color {
+	color: #999;
+	padding: 10px 16px;
+	font-size: 15px;
+	margin-top: -20px;
+	font-family: 'Noto Sans';
+}
+
+.sp-thumb {
+	width: 75px;
+	margin-top: -19px;
+	padding: 0px 16px;
+}
+
+.variations .value {
+  width: 55px;
+  position: relative;
+  top: -20px;
+  left: 13px;
+  float: left;
+}
+
+.variations .value:after {
+  content: '\f078';
+  font: normal normal normal 8px/1 FontAwesome;
+  color: #fff;
+  position: relative;
+  top: -39px;
+  left: 32px;
+  pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+   display: none;
+}
+
+.variations .value select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  
+  display: block;
+  height: 46px;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  font-size: 16px !important;
+  font-family: 'Noto Sans';
+  line-height: 1.75;
+  color: #fff !important;
+  background-color: #007bff !important;
+  background-image: none;
+  border: 3px solid #92c7ff;
+  border-radius: 6px;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+
+.variations .value select>option {
+  font-size: 10px;
+  margin-left: 0px !important;
+}
+
+select#pa_sizes option:first-child {
+  display: none;
+}
+
+.reset_variations {
+	display: none !important;
+}
+
+.woocommerce button.button.alt {
+	color: #007bff;
+	font-size: 15px;
+	height: 42px;
+	width: 42%;
+	background-color: #fff;
+	border: 1px solid #007bff;
+	position: relative;
+    top: 6px;
+	left: 11px;
+}
+
+.woocommerce button.button.alt:active {
+	color: #007bff;
+	background-color: #fff;	
+	border: 1px solid blue !important;
+}
+
+.woocommerce button.button.alt:hover {
+	color: blue;
+	background-color: #fff;	
+}
+
+.bn-btn {
+	color: #dc3545 !important;
+	font-size: 15px;
+	height: 42px;
+	width: 87%;
+	margin-left: 40px !important;
+	background-color: #fff;
+	border: 1px solid #dc3545 !important;
+}
+
+.bn-btn:active {
+	color: red !important;
+	background-color: #fff !important;	
+	border: 1px solid red !important;
+}
+
+.bn-btn:hover {
+	color: red !important;
+	background-color: #fff !important;	
+}
+
+
+@font-face {
+	font-family: 'Noto Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf'); 
+	src: local(''),
+       url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype') 
+}
+
+.sp-btn {
+	margin-top: -44px !important;
+}
+
+
+
+
+
+

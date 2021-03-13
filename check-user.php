@@ -1,6 +1,10 @@
 <?php 
 
-/* Template Name: check_user */
+/* Template Name: check-user */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $jsuser = $_POST['jsuser'];
 

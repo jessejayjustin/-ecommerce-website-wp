@@ -1,6 +1,10 @@
 <?php 
 
-/* Template Name: check_email */
+/* Template Name: check-email */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $jsemail = $_POST['jsemail'];
 

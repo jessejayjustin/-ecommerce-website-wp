@@ -1,0 +1,366 @@
+.woocommerce table.shop_table {
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 0px !important;
+}
+
+.post-397 header {
+	display: none;
+}
+
+.post-397 .entry-content {
+	margin: 0 !important;
+	background-color: #f6f6f6 !important;
+}
+
+.cart-title {
+	margin: 0 auto;
+	font-size: 42px;
+	color: #0000ff;
+	font-family: 'Noto Sans';
+	margin: 26px 0px 18px 31px;
+}
+
+.woocommerce-cart-form {
+	margin: 0 auto;
+	width: 50%;
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #fff;
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border: 1px solid #dee2e6 !important;
+}
+
+.shop_table th {
+    padding: 15px 12px !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.shop_table th:last-child {
+    padding: 15px 0px !important;
+}
+
+.edit-link {
+	display: none;
+}
+
+.woocommerce table.shop_table td {
+	padding: 10px 25px;
+}
+
+.woocommerce table.shop_table td:nth-child(3) {
+	padding: 10px 0px !important;
+}
+
+.woocommerce table.shop_table td:last-child {
+	padding: 10px 0px !important;
+}
+
+.woocommerce table.shop_table td:first-child {
+	padding: 10px 0px !important;
+}
+
+.product-thumbnail img {
+	width: 80px !important;
+}
+
+.remove-pr {
+	position: relative;
+	top: -8px;
+}
+
+.pr-name {
+	font-size: 15px;
+	font-family: 'Noto Sans';
+	margin-left: -10px !important;
+}
+
+.woocommerce-cart-form__cart-item {
+	background-color: #ececec !important;
+}
+
+.qib-container {
+	padding: 0 !important;
+	display: inline-block !important;
+}
+
+.qib-container .quantity input.qty:not(#qib_id):not(#qib_id) {
+	border: none !important;
+	width: 30px !important;
+	margin-top: -3px !important;
+}
+
+.qib-button:not(#qib_id):not(#qib_id) {
+    border-radius: 5px !important;
+    width: 35px !important;
+    background-color: #ececec !important;
+}
+
+.qib-button:not(#qib_id):not(#qib_id):hover {
+	background-color: #6c757d !important;
+	color: #fff;
+}
+
+.cart-pr-price>span {
+	font-family: 'Noto Sans';
+	font-size: 15px !important;
+}
+
+.checkout-button {
+	color: #fff;
+	font-size: 16px;
+	height: 35px;
+	width: 80px;
+	float: right;
+	position: relative;
+	right: 30px;
+	background-color: #007bff !important;
+	border: 1px solid #007bff;
+}
+
+#cart_total {
+	font-size: 16px!important;
+	float: right !important;
+	border-top: 0 !important;
+	position: relative;
+	top: -10px;
+	left: 0px;
+}
+
+#cart_total>span {
+	font-weight: bold;
+}
+
+#cart_chkout_btn {
+   	float: right !important;
+   	border-top: 0 !important;
+   	position: relative;
+   	top: -30px;
+	left: 30px;
+}
+
+.table-total {
+	border: 0 !important;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf'); 
+  src: local(''),
+       url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype') 
+}
+
+.checkout-fields {
+	width: 50%;
+	margin: 0 auto;
+	padding: 50px;
+	width: 50%;
+	height: auto;
+	background-color: #fff;
+}
+
+.post-398 {
+   margin-top: -15px !important;
+   background-color: #f5f5f5;
+}
+
+.post-398 header {
+   display: none !important;
+   margin: 0 !important;
+}
+
+.shop-table {
+	margin: 0 auto !important;
+	width: 98%;
+}
+
+.shop-table-header {
+	width: 100%;
+}
+
+.shop-table-header-name {
+	width: 50%;
+	float: left;
+	margin-top: 25px;
+	margin-bottom: -8px;
+	font-size: 13px;
+	font-family: 'Noto Sans';
+}
+
+.shop-table-header-name p {
+	font-weight: bold;
+}
+
+.shop-table-header-name:last-child p {
+	float: right;
+}
+
+.shop-table-header-border {
+	border-bottom: 1px solid #333;
+	margin-bottom: 10px;
+}
+
+.shop-item-data {
+	width: 100%;
+}
+
+.shop-item {
+	width: 50%;
+	float: left;
+	font-size: 11px;
+}
+
+.shop-item .shop-item-total {
+	float: right;
+}
+
+.shop-item .shop-item-total  {
+	color: #333;
+}
+
+.woocommerce-checkout #payment {
+	background-color: #fff !important;
+}
+
+.shop-subtotal {
+	width: 100%;
+}
+
+.shop-subtotal-child {
+	width: 50%;
+	float: left;
+	color: #999;
+	font-size: 11px;
+}
+
+.shop-subtotal .shop-subtotal-total  {
+	float: right;
+}
+
+.shop-subtotal-top-border {
+	border-bottom: 1px solid #333;
+	margin-bottom: 10px;
+}
+
+.shop-total {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.shop-total-child {
+	width: 50%;
+	float: left;
+}
+
+.shop-total-name {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.shop-total-ttl {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.shop-total .shop-total-ttl {
+	float: right;
+}
+
+.shop-total-bottom-border {
+	margin-top: 10px;
+	border-bottom: 1px solid #333;
+}
+
+.woocommerce-checkout-payment {
+	margin-top: 20px;
+}
+
+.woocommerce button.button.shop {
+    color: #fff;
+    font-size: 13px;
+    height: 25px;
+    width: 120px;
+    padding: 0 !important;
+    background-color: #b2b2ff;
+    border: 2px solid #5959d5;
+    position: relative;
+    top: 6px;
+    left: 11px;
+    font-family: sans-serif;
+}
+
+.woocommerce button.button.shop:hover {
+    color: #5959d5;
+}
+
+.woocommerce button.button.shop:active {
+    color: #5959d5;
+}
+
+.woocommerce-info, .woocommerce-message {
+    border-top: 3px solid #5959d5 !important;
+}
+
+.woocommerce button.button, .woocommerce input.button {
+    font-weight: 0 !important;
+}
+
+.woocommerce-billing-fields {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-first>label {
+   font-size: 11px;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-first input {
+   font-size: 12px;
+   height: 24px;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-last>label {
+   font-size: 11px;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-last input {
+   font-size: 12px;
+   height: 24px;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-wide>label {
+   font-size: 11px;
+}
+
+.woocommerce-billing-fields__field-wrapper .form-row-wide input {
+   font-size: 12px;
+   height: 24px;
+}
+
+.woocommerce-billing-fields__field-wrapper .address-field>label {
+   font-size: 11px;
+}
+
+.woocommerce-billing-fields__field-wrapper .address-field input {
+   font-size: 12px;
+   height: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

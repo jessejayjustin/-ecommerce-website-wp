@@ -1,4 +1,4 @@
-#login_banner {
+.login-container {
   background:url("../images/night-city.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -26,7 +26,7 @@
 	top: 10em;
 }
 
-.login_form_header {
+.login-header {
 	background-color: violet;
 	width: 17.5em;
 	height: 109px;
@@ -34,37 +34,38 @@
 	padding-bottom: 0;
 }
 
-.login_form_header p:nth-child(1) {
-	font-size: 42px;
+.login-header p:nth-child(1) {
+	font-size: 41px;
 	color: #fff;
-	font-family: 'Open Sans';
+	font-family: 'Noto Sans';
   font-weight: 400;
   line-height: 50px;
   padding-top: 5px;
 }
 
-.login_form_header p:last-child {
-	font-size: 42px;
+.login-header p:last-child {
+	font-size: 41px;
 	color: #fff;
-	font-family: 'Open Sans';
+	font-family: 'Noto Sans';
   font-weight: 400;
+  margin-top: -1px;
 }
 
-.login_form_email {
+.login-email {
   margin-left: 38px;
 }
 
-.login_form_email label {
+.login-email label {
   display: flex;
   justify-content: flex-start;
-  font-size: 13px;
-  font-family: 'Open Sans';
+  font-size: 12px;
+  font-family: 'Noto Sans';
   font-weight: 400;
   margin-top: 16px;
   line-height: 5px;
 }
 
-.login_form_email input {
+.login-email input {
   width: 183px;
   height: 20px;
   font-size: 15px;
@@ -72,25 +73,25 @@
   border-radius: 4px;
 }
 
-.login_form_email input:focus {
+.login-email input:focus {
   outline-width: 0;
 }
 
-.login_form_password {
+.login-password {
   margin-left: 38px;
 }
 
-.login_form_password label {
+.login-password label {
   display: flex;
   justify-content: flex-start;
-  font-size: 13px;
-  font-family: 'Open Sans';
+  font-size: 12px;
+  font-family: 'Noto Sans';
   font-weight: 400;
   margin-top: 16px;
   line-height: 5px;
 }
 
-.login_form_password input {
+.login-password input {
   width: 183px;
   height: 20px;
   font-size: 15px;
@@ -98,12 +99,12 @@
   border-radius: 4px;
 }
 
-.login_form_password input:focus {
+.login-password input:focus {
   outline-width: 0;
 }
 
-#login_text {
-  font-size: 18px;
+.login-text {
+  font-size: 15px;
   border-bottom: 1px solid blue;
   margin: 0 auto;
   position: relative;
@@ -116,7 +117,6 @@
   margin-top: 30px;
   border-radius: 7px;
   font-size: 13px;
-  font-family: 'Open Sans';
   font-weight: 400;
   width: 213px;
   margin: 13px 0 0 24px;
@@ -124,13 +124,14 @@
   background-color: #0064ff;
 }
 
-.signin_text {
+.signin-text-link {
   font-size: 13px;
   margin: 11px 0 0 28px;
 }
 
 #signin_link {
 	font-size: 13px;
+  font-family: 'Noto Sans';
 	color: #a590ff;
 	text-decoration:none; 
 	list-style-type: none;
@@ -138,21 +139,36 @@
 
 #username-error {
   color: red;
-  font-size: 13px;
+  font-size: 11px;
   margin: 8px 0 0 2px;
 }
 
 #password-error {
   color: red;
-  font-size: 13px;
+  font-size: 11px;
   margin: 8px 0 0 2px;
 }
 
-#lost_pass {
+#forgot_pass_link {
   font-size: 13px;
+  font-family: 'Noto Sans';
   color: #a590ff;
   text-decoration:none; 
   list-style-type: none;
+}
+
+.signin-text-link>p:last-child {
+  position: relative;
+  top: -5px;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf'); 
+  src: local(''),
+       url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype') 
 }
 
 

@@ -16,28 +16,28 @@ get_header();
 ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main"> 
-		<div id="login_banner">
+		<div class="login-container">
 			<div class="text-center result-message"></div>
-			<div class="text-center alert-success indicator">Please wait...</div>
+			<div class="text-center alert-success indicator"></div>
 	        <form id="login_form" method="post">
-	       	  <div class="login_form_header">
-	       	  	<p>Xyz</p>
+	       	  <div class="login-header">
+	       	  	<p>Zack</p>
 	       	  	<p>Market</p>
 	       	  </div>
-		      <p id="login_text">Login</p>
-		      <div class="login_form_email">
+		      <p class="login-text">Login</p>
+		      <div class="login-email">
 	       	    <label for="username">Username</label>
 	       	    <input class="required" id="username" type="text" name="username" value="">
 	       	    <p class="text-center status"></p>
 	       	  </div>
-	       	  <div class="login_form_password">
+	       	  <div class="login-password">
 	       	    <label for="password">Password</label>
 	       	    <input class="required" id="password" type="password" name="password" value="">
 	       	  </div>
 	       	  <input type="submit" id="submit_btn" name="submit" value="Login">
-	          <div class="signin_text">
+	          <div class="signin-text-link">
 	            <p>Don't you have an account? <a id="signin_link" href="<?php echo home_url('/signin/'); ?>">Signin</a> </p>
-	            <p>Lost your password? <a id="lost_pass" href="<?php echo home_url('/forgot-pass-reset/'); ?>">Click here</a> </p>
+	            <p>Forgot password? <a id="forgot_pass_link" href="<?php echo home_url('/forgot-pass-reset/'); ?>">Click here</a> </p>
 	          </div>
 	          <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
 	        </form>

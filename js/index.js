@@ -12,15 +12,16 @@ $j(document).ready(function(){
 	    },
 	    messages: {
 	        username: {
-	            required: "Username is required"
+	            required: "username is required"
 	        },
 	        password: {
-                required: "Password is required"
+                required: "password is required"
             }
 	    },
 	    submitHandler: function (form, e) {
 	    	e.preventDefault();
-
+            
+            $j('.indicator').html('Please wait...');
             $j('.indicator').show();
             $j('.result-message').hide();
 
@@ -50,7 +51,7 @@ $j(document).ready(function(){
 		          $j('.result-message').html(data.message); // Add success message to results div
 		          $j('.result-message').addClass('alert-success'); // Add class success to results div
 		          $j('.result-message').show(); // Show results div
-		          document.location.href = 'http://localhost/wordpress/index.php/home-page';
+		          document.location.href = 'http://localhost/wordpress/index.php/home';
 		        } else {
 		          $j('.result-message').html(data.message); // If there was an error, display it in results div
 		          $j('.result-message').addClass('alert-danger'); // Add class failed to results div
@@ -63,11 +64,11 @@ $j(document).ready(function(){
 
   $j("#signin_form").validate({
   	rules: {
-  		signin_username: {
+  		signin_user: {
 	      required: true,
 	      minlength: 8
         },
-	    signin_email: {
+	    signin_mail: {
 	      required: true,
 	      email: true
 	      /*
@@ -77,33 +78,34 @@ $j(document).ready(function(){
           }
           */
 	    },
-	    signin_password: {
+	    signin_pass: {
           required: true
         }
     },
     messages: {
-        signin_username: {
-            required: "Username is required",
-            minlength: "Username must be at least 8 characters"
+        signin_user: {
+            required: "username is required",
+            minlength: "username must be at least 8 characters"
         },
-        signin_email: {
-            required: "Email is required"
+        signin_mail: {
+            required: "email is required"
             //remote: "Email already in use!"
         },
-        signin_password: {
-            required: "Password is required"
+        signin_pass: {
+            required: "password is required"
         }
     },
     submitHandler: function (form, e) { 
             e.preventDefault();
-
+            
+            $j('.indicator').html('Please wait...');
             $j('.indicator').show();
             $j('.result-message').hide();
 
             var reg_nonce = $j('#signin_new_user_nonce').val();
-		    var reg_user  = $j('#signin_username').val();
-		    var reg_mail  = $j('#signin_email').val();
-		    var reg_pass  = $j('#signin_password').val();
+		    var reg_user  = $j('#signin_user').val();
+		    var reg_mail  = $j('#signin_mail').val();
+		    var reg_pass  = $j('#signin_pass').val();
 
 		     /**
 		     * AJAX URL where to send data
@@ -123,23 +125,20 @@ $j(document).ready(function(){
             var form = $j(this);
             $j.ajax({
             type: "POST",
+            dataType: 'json',
             url: ajax_url,
             data: data,
             success: function(data) {
                 if(data) {
                   $j('.indicator').hide();
                 }
-          	    if(data === '1') {
-		          $j('.result-message').html('Your submission is complete.'); // Add success message to results div
+          	    if(data.signin == true) {
+		          $j('.result-message').html(data.message); // Add success message to results div
 		          $j('.result-message').addClass('alert-success'); // Add class success to results div
 		          $j('.result-message').show(); // Show results div
-		          document.location.href = 'http://localhost/wordpress';
+		          document.location.href = 'http://localhost/wordpress/';
 		        } else {
-		          if(data === 'Sorry, that email address is already used!') {
-		          	$j('#err_mail').html(data);
-		          } else {
-                    $j('.result-message').html(data);
-		          }
+		          $j('.result-message').html(data.message);
 		          $j('.result-message').addClass('alert-danger'); // Add class failed to results div
 		          $j('.result-message').show(); // Show results div
 		        }
@@ -183,17 +182,17 @@ $j(document).ready(function(){
 	    }
   });
   // Check email exists
-  $j("#signin_email").keyup(function() {
+  $j("#prod-search").keyup(function() {
 	var jsemail= $j("#signin_email").val();
 	$j.ajax({
-		url:"http://localhost/wordpress/index.php/check_email/",
+		url:"http://localhost/wordpress/index.php/search-product/",
 		type:"POST",
 		data:"action=chekmail&jsemail="+jsemail,
 		success:function(results) {
 			if(results=="yes"){
 				$j("#err_mail").html("Sorry, that email address is already used!");
 			} else {
-				$j("#err_mail").html("The email doesn't exist");
+				$j("#err_mail").html("The email is available");
 
 			}
 		}
@@ -203,17 +202,34 @@ $j(document).ready(function(){
   $j("#signin_username").keyup(function() {
 	var jsuser= $j("#signin_username").val();
 	$j.ajax({
-		url:"http://localhost/wordpress/index.php/check_user/",
+		url:"http://localhost/wordpress/index.php/check-user/",
 		type:"POST",
 		data:"action=chekuser&jsuser="+jsuser,
 		success:function(results) {
 			if(results=="yes"){
 				$j("#err_user").html("Sorry, that username is already used!");
 			} else {
-				$j("#err_user").html("The username doesn't exist");
+				$j("#err_user").html("The username is available");
 
 			}
 		}
     });
    });
+    /*
+    var timeout;
+ 
+	jQuery( function( $ ) {
+		$('.woocommerce').on('change', 'input.qty', function(){
+	 
+			if ( timeout !== undefined ) {
+				clearTimeout( timeout );
+			}
+	 
+			timeout = setTimeout(function() {
+				$("[name='update_cart']").trigger("click");
+			}, 500 ); // 1 second delay, half a second (500) seems comfortable too
+	 
+		});
+	});
+	*/
 });

@@ -1,4 +1,4 @@
-#signin_banner {
+.signin-banner {
   background:url("../images/night-city.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -17,54 +17,54 @@
 }
 
 #signin_form {
-	width: 26em;
-	height: auto;
-	background-color: #fff;
-	margin: 0 auto;
-	padding-bottom: 17px;
-	position: relative;
-	top: 10em;
+  width: 26em;
+  height: auto;
+  background-color: #fff;
+  margin: 0 auto;
+  padding-bottom: 17px;
+  position: relative;
+  top: 10em;
 }
 
-.signin_form_header {
-	background-color: violet;
-	width: 17.5em;
-	height: 109px;
-	margin: 0 auto;
-	padding-bottom: 0;
+.signin-header {
+  background-color: violet;
+  width: 17.5em;
+  height: 109px;
+  margin: 0 auto;
+  padding-bottom: 0;
 }
 
-.signin_form_header p:nth-child(1) {
-	font-size: 42px;
-	color: #fff;
-	font-family: 'Open Sans';
-  font-weight: 400;
+.signin-header p:nth-child(1) {
+  font-size: 41px;
+  color: #fff;
+  font-family: 'Noto Sans';
   line-height: 50px;
   padding-top: 5px;
+  margin-left: 0px;
 }
 
-.signin_form_header p:last-child {
-	font-size: 42px;
-	color: #fff;
-	font-family: 'Open Sans';
-  font-weight: 400;
+.signin-header p:last-child {
+  font-size: 41px;
+  color: #fff;
+  font-family: 'Noto Sans';
+  margin-top: -1px;
 }
 
-.signin_form_username {
+.signin-user {
   margin-left: 38px;
 }
 
-.signin_form_username label {
+.signin-user label {
    display: flex;
    justify-content: flex-start;
-   font-size: 13px;
-   font-family: 'Open Sans';
+   font-size: 12px;
+   font-family: 'Noto Sans';
    font-weight: 400;
    margin-top: 16px;
    line-height: 5px;
 }
 
-.signin_form_username input {
+.signin-user input {
    width: 183px;
    height: 20px;
    font-size: 15px;
@@ -72,25 +72,25 @@
    border-radius: 4px;
 }
 
-.signin_form_username input:focus {
+.signin-user input:focus {
    outline-width: 0;
 }
 
-.signin_form_email {
+.signin-mail {
   margin-left: 38px;
 }
 
-.signin_form_email label {
+.signin-mail label {
    display: flex;
    justify-content: flex-start;
-   font-size: 13px;
-   font-family: 'Open Sans';
+   font-size: 12px;
+   font-family: 'Noto Sans';
    font-weight: 400;
    margin-top: 16px;
    line-height: 5px;
 }
 
-.signin_form_email input {
+.signin-mail input {
    width: 183px;
    height: 20px;
    font-size: 15px;
@@ -98,25 +98,25 @@
    border-radius: 4px;
 }
 
-.signin_form_email input:focus {
+.signin-mail input:focus {
    outline-width: 0;
 }
 
-.signin_form_password {
+.signin-pass {
   margin-left: 38px;
 }
 
-.signin_form_password label {
+.signin-pass label {
    display: flex;
    justify-content: flex-start;
-   font-size: 13px;
-   font-family: 'Open Sans';
+   font-size: 12px;
+   font-family: 'Noto Sans';
    font-weight: 400;
    margin-top: 16px;
    line-height: 5px;
 }
 
-.signin_form_password input {
+.signin-pass input {
   width: 183px;
   height: 20px;
   font-size: 15px;
@@ -124,12 +124,13 @@
   border-radius: 4px;
 }
 
-.signin_form_password input:focus {
+.signin-pass input:focus {
   outline-width: 0;
 }
 
-#signin_text {
-  font-size: 18px;
+.signin-text {
+  font-size: 15px;
+  font-family: 'Noto Sans';
   border-bottom: 1px solid blue;
   margin: 0 auto;
   position: relative;
@@ -150,15 +151,16 @@
   background-color: #0064ff;
 }
 
-.login_text {
+.login-text-link {
   font-size: 13px;
   margin: 11px 0 0 36px;
+  font-family: 'Noto Sans';
 }
 
 #login_link {
-	color: #a590ff;
-	text-decoration:none; 
-	list-style-type: none;
+  color: #a590ff;
+  text-decoration:none; 
+  list-style-type: none;
 }
 
 .result-message {
@@ -170,38 +172,29 @@
   font-size: 13px;
 }
 
-#err_user {
+#signin_user-error {
   color: red;
   font-size: 11px;
-  margin: 3px 0 0 2px;
-}
-
-#err_mail {
-  color: red;
-  font-size: 11px;
-  margin: 3px 0 0 2px;
-}
-
-#err_pass {
-  color: red;
-  font-size: 11px;
-  margin: 3px 0 0 2px;
-}
-
-#signin_username-error {
-  color: red;
-  font-size: 13px;
   margin: 8px 0 0 2px;
 }
 
-#signin_email-error {
+#signin_mail-error {
   color: red;
-  font-size: 13px;
+  font-size: 11px;
   margin: 8px 0 0 2px;
 }
 
-#signin_password-error {
+#signin_pass-error {
   color: red;
-  font-size: 13px;
+  font-size: 11px;
   margin: 8px 0 0 2px;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf'); 
+  src: local(''),
+       url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype') 
 }
