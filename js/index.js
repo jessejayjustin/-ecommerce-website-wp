@@ -66,7 +66,7 @@ $j(document).ready(function(){
   	rules: {
   		signin_user: {
 	      required: true,
-	      minlength: 8
+	      minlength: 5
         },
 	    signin_mail: {
 	      required: true,
@@ -85,7 +85,7 @@ $j(document).ready(function(){
     messages: {
         signin_user: {
             required: "username is required",
-            minlength: "username must be at least 8 characters"
+            minlength: "username must be at least 5 characters"
         },
         signin_mail: {
             required: "email is required"
@@ -159,7 +159,8 @@ $j(document).ready(function(){
 	        }
 	    }
   });
-  $j("#reset_pass_form").validate({
+
+	$j("#reset_pass_form").validate({
 	  	rules: {
 	  		npass: {
 		      required: true,
@@ -180,41 +181,43 @@ $j(document).ready(function(){
                 minlength: "Password must be at least 6 characters"
             }
 	    }
-  });
-  // Check email exists
-  $j("#prod-search").keyup(function() {
-	var jsemail= $j("#signin_email").val();
-	$j.ajax({
-		url:"http://localhost/wordpress/index.php/search-product/",
-		type:"POST",
-		data:"action=chekmail&jsemail="+jsemail,
-		success:function(results) {
-			if(results=="yes"){
-				$j("#err_mail").html("Sorry, that email address is already used!");
-			} else {
-				$j("#err_mail").html("The email is available");
+	});
 
+    // Check username exists
+    $j("#signin_user").keyup(function() {
+		var username = $j("#signin_user").val();
+		$j.ajax({
+			url:"http://localhost/wordpress/index.php/check-user/",
+			type:"POST",
+			data:"action=checkuser&username="+username,
+			
+			success:function(data) {
+				if(data == 'username is already used!') {
+					$j("#user_err_msg").html(data);
+				} else {
+					$j("#user_err_msg").html(data);
+				}
 			}
-		}
+	    });
     });
-   });
 
-  $j("#signin_username").keyup(function() {
-	var jsuser= $j("#signin_username").val();
-	$j.ajax({
-		url:"http://localhost/wordpress/index.php/check-user/",
-		type:"POST",
-		data:"action=chekuser&jsuser="+jsuser,
-		success:function(results) {
-			if(results=="yes"){
-				$j("#err_user").html("Sorry, that username is already used!");
-			} else {
-				$j("#err_user").html("The username is available");
-
+    // Check email exists
+    $j("#signin_mail").keyup(function() {
+		var email= $j("#signin_mail").val();
+		$j.ajax({
+			url:"http://localhost/wordpress/index.php/check-email/",
+			type:"POST",
+			data:"action=checkmail&email="+email,
+			success:function(data) {
+				if(data == 'email is already used!'){
+					$j("#mail_err_msg").html(data);
+				} else {
+					$j("#mail_err_msg").html(data);
+				}
 			}
-		}
+	    });
     });
-   });
+
     /*
     var timeout;
  
