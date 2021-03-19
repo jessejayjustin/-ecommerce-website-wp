@@ -65,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <h2 class="title"><?= $title; ?></h2>
                           <div>
                 
-                            <span class="price"><?= $price_html; ?> CAD</span><br>
+                            <span class="product-price"><?= $price_html; ?> CAD</span><br>
                             <span class="color"><?= $color; ?></span>
                              <?php
                            
