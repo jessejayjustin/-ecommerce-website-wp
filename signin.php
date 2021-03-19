@@ -22,17 +22,14 @@ get_header();
 		      <div class="signin-user">
 	       	    <label for="signin_user">Username</label>
 	       	    <input class="minlength required" id="signin_user" type="text" name="signin_user">
-	       	    <div class="error" id="err_user"></div>
 	       	  </div>
 		      <div class="signin-mail">
 	       	    <label for="signin_mail">Email</label>
 	       	    <input class="required" id="signin_mail" type="text" name="signin_mail">
-	       	    <div class="error" id="err_mail"></div>
 	       	  </div>
 	       	  <div class="signin-pass">
 	       	    <label for="signin_pass">Password</label>
 	       	    <input class="required" id="signin_pass" type="password" name="signin_pass">
-	       	    <div class="error" id="err_pass"></div>
 	       	  </div>
 	       	  <?php wp_nonce_field('signin_new_user','signin_new_user_nonce', true, true ); ?>
 	       	  <input type="submit" id="signin_btn" name="submit" value="Signin">
