@@ -28,16 +28,15 @@ get_header();
 		      <div class="login-email">
 	       	    <label for="username">Username</label>
 	       	    <input class="required" id="username" type="text" name="username" value="">
-	       	    <p class="text-center status"></p>
 	       	  </div>
-	       	  <div class="login-password">
+	       	  <div class="login-pass">
 	       	    <label for="password">Password</label>
 	       	    <input class="required" id="password" type="password" name="password" value="">
 	       	  </div>
 	       	  <input type="submit" id="submit_btn" name="submit" value="Login">
 	          <div class="signin-text-link">
 	            <p>Don't you have an account? <a id="signin_link" href="<?php echo home_url('/signin/'); ?>">Signin</a> </p>
-	            <p>Forgot password? <a id="forgot_pass_link" href="<?php echo home_url('/forgot-pass-reset/'); ?>">Click here</a> </p>
+	            <p>Forgot Password? <a id="forgot_pass_link" href="<?php echo home_url('/forgot-pass-reset/'); ?>">Click here</a> </p>
 	          </div>
 	          <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
 	        </form>
