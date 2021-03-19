@@ -3,22 +3,20 @@
 /* Template Name: check-user */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
-$jsuser = $_POST['jsuser'];
+$username = $_POST['username'];
 
 global $wpdb;
-$query = "SELECT user_login FROM wp_users WHERE user_login = '$jsuser'";
+$query = "SELECT user_login FROM wp_users WHERE user_login = '$username'";
 
-$users = $wpdb->get_results($query);
+$user = $wpdb->get_results($query);
 
-foreach ($users as $user ) {
-
-	if( $user == $jsuser) {
-	   echo $jsuser;
-	}else{
-	   echo 'yes';
-    }
+if($user) {
+   echo 'username is already used!';
+}else{
+   echo 'username is available';
 }
+
 ?>
