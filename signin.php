@@ -22,10 +22,12 @@ get_header();
 		      <div class="signin-user">
 	       	    <label for="signin_user">Username</label>
 	       	    <input class="minlength required" id="signin_user" type="text" name="signin_user">
+	       	    <p id="user_err_msg"></p>
 	       	  </div>
 		      <div class="signin-mail">
 	       	    <label for="signin_mail">Email</label>
 	       	    <input class="required" id="signin_mail" type="text" name="signin_mail">
+	       	    <p id="mail_err_msg"></p>
 	       	  </div>
 	       	  <div class="signin-pass">
 	       	    <label for="signin_pass">Password</label>
