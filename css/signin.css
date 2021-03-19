@@ -65,11 +65,13 @@
 }
 
 .signin-user input {
-   width: 183px;
-   height: 20px;
-   font-size: 15px;
-   border: 1px solid #999;
-   border-radius: 4px;
+  width: 183px;
+  height: 20px;
+  font-size: 13px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  border-radius: 5px !important;
+  padding: 5px 7px !important;
 }
 
 .signin-user input:focus {
@@ -91,11 +93,13 @@
 }
 
 .signin-mail input {
-   width: 183px;
-   height: 20px;
-   font-size: 15px;
-   border: 1px solid #999;
-   border-radius: 4px;
+  width: 183px;
+  height: 20px;
+  font-size: 13px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  border-radius: 5px !important;
+  padding: 5px 7px !important;
 }
 
 .signin-mail input:focus {
@@ -119,9 +123,11 @@
 .signin-pass input {
   width: 183px;
   height: 20px;
-  font-size: 15px;
+  font-size: 13px;
   border: 1px solid #999;
   border-radius: 4px;
+  border-radius: 5px !important;
+  padding: 5px 7px !important;
 }
 
 .signin-pass input:focus {
