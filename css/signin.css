@@ -184,6 +184,18 @@
   margin: 8px 0 0 2px;
 }
 
+#user_err_msg{
+  color: red;
+  font-size: 11px;
+  margin: 8px 0 0 3px;
+}
+
+#mail_err_msg{
+  color: red;
+  font-size: 11px;
+  margin: 8px 0 0 3px;
+}
+
 #signin_mail-error {
   color: red;
   font-size: 11px;
