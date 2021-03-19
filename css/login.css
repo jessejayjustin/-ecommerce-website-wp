@@ -68,20 +68,21 @@
 .login-email input {
   width: 183px;
   height: 20px;
-  font-size: 15px;
+  font-size: 13px;
   border: 1px solid #999;
-  border-radius: 4px;
+  border-radius: 5px !important;
+  padding: 5px 7px !important;
 }
 
 .login-email input:focus {
   outline-width: 0;
 }
 
-.login-password {
+.login-pass {
   margin-left: 38px;
 }
 
-.login-password label {
+.login-pass label {
   display: flex;
   justify-content: flex-start;
   font-size: 12px;
@@ -91,15 +92,17 @@
   line-height: 5px;
 }
 
-.login-password input {
+.login-pass input {
   width: 183px;
   height: 20px;
-  font-size: 15px;
+  font-size: 13px;
   border: 1px solid #999;
   border-radius: 4px;
+  border-radius: 5px !important;
+  padding: 5px 7px !important;
 }
 
-.login-password input:focus {
+.login-pass input:focus {
   outline-width: 0;
 }
 
@@ -118,6 +121,7 @@
   border-radius: 7px;
   font-size: 13px;
   font-weight: 400;
+  font-family: 'Open Sans';
   width: 213px;
   margin: 13px 0 0 24px;
   color: #fff;
@@ -157,9 +161,8 @@
   list-style-type: none;
 }
 
-.signin-text-link>p:last-child {
-  position: relative;
-  top: -5px;
+.signin-text-link>p:first-child {
+   margin-top: 15px;
 }
 
 @font-face {
