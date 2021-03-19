@@ -6,19 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$jsemail = $_POST['jsemail'];
+$email = $_POST['email'];
 
 global $wpdb;
-$query = "SELECT user_email FROM wp_users WHERE user_email = '$jsemail'";
+$query = "SELECT user_email FROM wp_users WHERE user_email = '$email'";
 
-$user_email = $wpdb->get_results($query);
+$mail = $wpdb->get_results($query);
 
-foreach ($user_email as $user_emails ) {
-
-	if( $user_emails == $jsemail) {
-	   echo $jsemail;
-	}else{
-	   echo 'yes';
-    }
+if($mail) {
+   echo 'email is already used!';
+}else{
+   echo 'email is available';
 }
+
 ?>
