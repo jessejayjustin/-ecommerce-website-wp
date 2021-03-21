@@ -306,6 +306,10 @@ function ajax_login(){
 
     $error = '';
 
+    if(is_user_logged_in()) {
+       $error = 'user is currently logged in!';
+    }
+
     if(empty($username)) {
        $error .= 'username is required';
     }
@@ -351,12 +355,10 @@ add_action('wp_enqueue_scripts', 'signin_user_scripts', 100);
  *
  */
 function ajax_signin_new_user() {
-  // Verify nonce
-  if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'signin_new_user'))
-    die( 'Ooops, something went wrong, please try again later.' );
+    // Verify nonce
+    if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'signin_new_user'))
+    die('Ooops, something went wrong, please try again later.');
 
-    //$exists = email_exists($_POST['signin_email']);
-	
     // Post values
     $user = $_POST['user'];
     $email    = $_POST['mail'];
@@ -364,18 +366,26 @@ function ajax_signin_new_user() {
 
     $error = '';
 
+	if (username_exists($user)) {
+	    $error = "username in use!";
+	} 
+
+	if (email_exists($email)) {
+	    $error = "email in use!";
+	} 
+
     if(empty($user)) {
-       $error .= 'username is required';
+       $error = 'username is required';
     }
 
     if(empty($email)) {
-       $error .= 'email is required';
+       $error = 'email is required';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       $error .= 'enter valid email';
+       $error = 'enter valid email';
     }
 
     if(empty($password)) {
-       $error .= 'password is required';
+       $error = 'password is required';
     }
 
     /*
@@ -488,7 +498,7 @@ function handle_login_form() {
 
 add_action( 'template_redirect', function() {
 
-    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass-reset') && !is_page('wp-login') ) {
+    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass') && !is_page('wp-login') ) {
 
         if (!is_user_logged_in() ) {
             wp_redirect( site_url(is_front_page()) );        // redirect all...
