@@ -172,11 +172,11 @@ function forgot_pass_css_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'forgot_pass_css_styles');
 
-function reset_pass_page_css_styles() {
+function forgot_pass_reset_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
-    wp_enqueue_style( 'reset-pass-page-style', get_template_directory_uri() . '/css/reset-setting-pass.css' ); // our stylesheet
+    wp_enqueue_style( 'forgot-pass-reset-style', get_template_directory_uri() . '/css/forgot-pass-reset.css' ); // our stylesheet
 }
-add_action( 'wp_enqueue_scripts', 'reset_pass_page_css_styles');
+add_action( 'wp_enqueue_scripts', 'forgot_pass_reset_css_styles');
 
 function home_css_styles() {
 	wp_enqueue_style( 'wp_starter_kit-style', get_stylesheet_uri() ); 
