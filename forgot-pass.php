@@ -61,30 +61,30 @@ if(isset($_POST['forgot_pass_Sbumit'])) {
 		$key = $wpdb->get_var("SELECT user_activation_key FROM $wpdb->users WHERE user_login ='".$user_login."'");
 		
 		 	if(empty($key)) {
-		 	//generate reset key
+		 	    //generate reset key
 				$key = wp_generate_password(20, false);
 				$wpdb->update($wpdb->users, array('user_activation_key' => $key), array('user_login' => $user_login));
 			}
 		 
-			    $message = __('Someone requested that the password be reset for the following account:') . "<br><br><br>";
-			 	$message .= get_option('siteurl') . "<br><br>";
-			 	$message .= sprintf(__('Username: %s'), $user_login) . "<br>";
-			 	$message .= __('If this was a error, just ignore this email as no action will be taken.') . "<br><br>";
-			 	$message .= __('To reset your password, visit the following address:') . "<br><br>";
-			 	$message .= '<a href="'. tg_validate_url() . "?action=reset_pwd&key=$key&login=" . rawurlencode($user_login) . '" > '. home_url('reset-setting-password') . "?action=reset_pwd&key=$key&login=" . rawurlencode($user_login) ."</a><br><br>";
+		    $message = __('Someone requested that the password be reset for the following account:') . "<br><br><br>";
+		 	$message .= get_option('siteurl') . "<br><br>";
+		 	$message .= sprintf(__('Username: %s'), $user_login) . "<br>";
+		 	$message .= __('If this was a error, just ignore this email as no action will be taken.') . "<br><br>";
+		 	$message .= __('To reset your password, visit the following address:') . "<br><br>";
+		 	$message .= '<a href="'. tg_validate_url() . "?action=reset_pwd&key=$key&login=" . rawurlencode($user_login) . '" > '. home_url('reset-setting-password') . "?action=reset_pwd&key=$key&login=" . rawurlencode($user_login) ."</a><br><br>";
 
-			 	$subject = 'Password Reset'; 
-		        
-				$emailTo = get_option('tz_email');
-				if (!isset($emailTo) || ($emailTo == '') ){
-					$emailTo = get_option('admin_email');
-				}
-				$headers = 'From: '.$user_login.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $user_email;
-				if(!wp_mail($user_email, $subject, $message, $headers)) {
-		            $_SESSION['errors'] = array("email failed to send");
-				} else {
-				    $_SESSION['success'] = array("we have just sent you an email with password reset instructions");
-				}
+		 	$subject = 'Password Reset'; 
+	        
+			$emailTo = get_option('tz_email');
+			if (!isset($emailTo) || ($emailTo == '') ){
+				$emailTo = get_option('admin_email');
+			}
+			$headers = 'From: '.$user_login.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $user_email;
+			if(!wp_mail($user_email, $subject, $message, $headers)) {
+	            $_SESSION['errors'] = array("email failed to send");
+			} else {
+			    $_SESSION['success'] = array("we have just sent you an email with password reset instructions");
+			}
 	} 
 } else {
 	if(empty($user_data)) {
@@ -93,6 +93,7 @@ if(isset($_POST['forgot_pass_Sbumit'])) {
 	    unset($_SESSION['success']);
 	}
 }
+
 ?>
 
 <div id="primary" class="content-area">
