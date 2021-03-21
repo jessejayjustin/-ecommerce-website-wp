@@ -36,7 +36,7 @@ get_header();
 	       	  <input type="submit" id="submit_btn" name="submit" value="Login">
 	          <div class="signin-text-link">
 	            <p>Don't you have an account? <a id="signin_link" href="<?php echo home_url('/signin/'); ?>">Signin</a> </p>
-	            <p>Forgot Password? <a id="forgot_pass_link" href="<?php echo home_url('/forgot-pass-reset/'); ?>">Click here</a> </p>
+	            <p>Forgot Password? <a id="forgot_pass_link" href="<?php echo home_url('/forgot-pass/'); ?>">Click here</a> </p>
 	          </div>
 	          <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
 	        </form>
