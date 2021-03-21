@@ -146,19 +146,20 @@ $j(document).ready(function(){
             });      
         return false;
     }
-  });
-  $j("#forgot_pass_form").validate({
+    });
+  
+    $j("#forgot_pass_form").validate({
 	  	rules: {
-	  		usermail: {
+	  		user_mail: {
 		      required: true
 	        }
 	    },
 	    messages: {
-	        usermail: {
-	            required: "Username/e-mail Shouldn't be empty"
+	        user_mail: {
+	            required: "username/e-mail Shouldn't be empty"
 	        }
 	    }
-  });
+    });
 
 	$j("#reset_pass_form").validate({
 	  	rules: {
@@ -182,15 +183,15 @@ $j(document).ready(function(){
             }
 	    }
 	});
-
+    /*
     // Check username exists
     $j("#signin_user").keyup(function() {
 		var username = $j("#signin_user").val();
 		$j.ajax({
 			url:"http://localhost/wordpress/index.php/check-user/",
 			type:"POST",
+			async: true,
 			data:"action=checkuser&username="+username,
-			
 			success:function(data) {
 				if(data == 'username is already used!') {
 					$j("#user_err_msg").html(data);
@@ -207,6 +208,7 @@ $j(document).ready(function(){
 		$j.ajax({
 			url:"http://localhost/wordpress/index.php/check-email/",
 			type:"POST",
+			async: true,
 			data:"action=checkmail&email="+email,
 			success:function(data) {
 				if(data == 'email is already used!'){
@@ -217,7 +219,7 @@ $j(document).ready(function(){
 			}
 	    });
     });
-
+    */
     /*
     var timeout;
  
