@@ -23,7 +23,7 @@ if(isset($_POST['forgot_pass_Sbumit'])) {
 	$errors = '';
 	if(!empty($user_input)) {
 	    if (strpos($user_input, '@')) {
-		 	$user_data = get_user_by( 'email', $user_input); 
+		 	$user_data = get_user_by('email', $user_input); 
 		 	if(empty($user_data) ) {
 		 	   $errors .= "email doesn't exist."; 
 		 	   $_SESSION['errors'] = array("email doesn't exist");
