@@ -10,13 +10,13 @@ get_header();
 
 if(isset($_POST['forgot_pass_Sbumit'])) {
   
-	if (isset($_POST['user-mail']) && empty($_POST['user-mail'])) {
+	if (isset($_POST['usermail']) && empty($_POST['usermail'])) {
 	 	$_SESSION['errors'] = array("username/e-mail shouldn't be empty");
 	} else if(!filter_var($_POST['user-mail'], FILTER_VALIDATE_EMAIL)) {
 		$error = 'enter valid email';
 		$_SESSION['errors'] = array("enter valid email");
 	} else {
-	 	$user_mail = $_POST['user-mail']; 
+	 	$user_mail = $_POST['usermail']; 
 	 	$user_input = esc_sql(trim($user_mail));
 	}
 
@@ -119,8 +119,8 @@ if(isset($_POST['forgot_pass_Sbumit'])) {
 			      	<div class="forgot-pass-header">
 		       	  	  <p>Please enter your username or email address. You will receive an email message with instructions on how to reset your password.</p>
 		       	    </div>
-		       	    <label for="user-mail">Username or Email Address</label>
-		       	    <input class="required" id="user_mail" type="text" name="user-mail" value="">
+		       	    <label for="usermail">Username or Email Address</label>
+		       	    <input class="required" id="user_mail" type="text" name="usermail" value="">
 		       	    <p class="text-center user_mail_error"></p>
 		       	</div>
 	       	  <input type="hidden" name="forgot_pass_Sbumit" value="kv_yes" >
