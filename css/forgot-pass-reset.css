@@ -32,7 +32,7 @@
   border-left: 6px solid violet;
 }
 
-.forgot_pass_reset_cpass label {
+.forgot_pass_reset_npass label {
   display: flex;
   justify-content: flex-start;
   font-size: 11px;
@@ -40,34 +40,12 @@
   margin-top: 20px;
   margin-left: 19px;
   line-height: 16px;
-}
-
-.forgot_pass_reset_cpass input {
-  width: 27rem;
-  height: 30px;
-  font-size: 16px;
-  border: 1px solid #999;
-  border-radius: 6px;
-  margin-left: 19px;
-}
-
-.forgot_pass_reset_cpass input:focus {
-  outline-width: 0;
-}
-
-.forgot_pass_reset_npass label {
-  display: flex;
-  justify-content: flex-start;
-  font-size: 13px;
-  font-weight: 400;
-  margin-top: 20px;
-  margin-left: 19px;
-  line-height: 16px;
+  font-family: 'Noto Sans';
 }
 
 .forgot_pass_reset_npass input {
   width: 27rem;
-  height: 36px;
+  height: 30px;
   font-size: 22px;
   border: 1px solid #999;
   border-radius: 4px;
@@ -81,16 +59,17 @@
 .forgot_pass_reset_cfpass label {
   display: flex;
   justify-content: flex-start;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   margin-top: 20px;
   margin-left: 19px;
   line-height: 16px;
+  font-family: 'Noto Sans';
 }
 
 .forgot_pass_reset_cfpass input {
   width: 27rem;
-  height: 36px;
+  height: 30px;
   font-size: 22px;
   border: 1px solid #999;
   border-radius: 4px;
@@ -102,24 +81,26 @@
 }
 
 #forgot_pass_reset_btn {
-  margin-top: 30px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
-  margin: 10px 0 0 14rem;
-  width: 150px;
+  float: right;
+  width: 130px;
   height: 36px;
   color: #fff;
   background-color: #0064ff;
+  font-family: 'Noto Sans';
+  margin-right: 24px;
+  margin-top: 15px;
 }
 
 .log_in {
-  font-size: 13px;
-  margin: 11px 0 0 22px;
+  margin-left: 22px;
+  font-family: 'Noto Sans';
 }
 
 #log_in_lnk {
-	font-size: 13px;
+	font-size: 12px;
 	text-decoration:none; 
 	list-style-type: none;
 }
