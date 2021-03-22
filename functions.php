@@ -498,7 +498,7 @@ function handle_login_form() {
 
 add_action( 'template_redirect', function() {
 
-    if( ( !is_front_page() && !is_page('signin') && !is_page('reset-setting-password')) && !is_page('forgot-pass') && !is_page('wp-login') ) {
+    if( ( !is_front_page() && !is_page('signin') && !is_page('forgot-pass')) && !is_page('forgot-pass-reset') && !is_page('wp-login') ) {
 
         if (!is_user_logged_in() ) {
             wp_redirect( site_url(is_front_page()) );        // redirect all...
