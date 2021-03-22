@@ -28,11 +28,11 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 			// Check for errors
             if (empty($npass) && empty($cfpass)) {
               $_SESSION['errors'] = array("all fields are required");
-		      $errors[] = 'All fields are required';
+		      $errors[] = 'all fields are required';
 		    }
 			if($npass != $cfpass){
 				$_SESSION['errors'] = array("password does not match");
-				$errors[] = 'Password does not match';
+				$errors[] = 'password does not match';
 			} 
 			if(empty($errors)){
 				wp_set_password( $npass, $current_user->ID );
