@@ -19,7 +19,7 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 	$user_login = $user_data->user_login;
 	$user_email = $user_data->user_email;
 	if(!empty($reset_key) && !empty($user_data)) {
-		if(isset($_POST['reset_pass_Sbumit'])) {
+		if(isset($_POST['forgot_pass_reset_Sbumit'])) {
 			$_POST = array_map('stripslashes_deep', $_POST);
 			$npass = sanitize_text_field($_POST['npass']);
 			$cfpass = sanitize_text_field($_POST['cfpass']);
@@ -117,18 +117,18 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 			    <?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-		<div id="reset_pass_banner">
-	        <form id="reset_pass_form" action="<?php echo "http://".$_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI']; ?>" method="post">
-	       	  <div class="reset_form_npass">
+		<div class="forgot-pass-reset-container">
+	        <form id="forgot_pass_reset_form" action="<?php echo "http://".$_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI']; ?>" method="post">
+	       	  <div class="forgot_pass_reset_npass">
 	       	  	<label for="npass">New Password</label>
 	       	    <input class="required" id="npass" type="password" name="npass" value="">
 	       	  </div>
-	       	  <div class="reset_form_cfpass">
+	       	  <div class="forgot_pass_reset_cfpass">
                 <label for="cfpass">Confirm Password</label>
 	       	    <input class="required" id="cfpass" type="password" name="cfpass" value="">
 	       	  </div>
-	       	  <input type="hidden" name="reset_pass_Sbumit" value="reset_yes" >
-	       	  <input type="submit" id="reset_pass_btn" name="submit" value="Update Password">
+	       	  <input type="hidden" name="forgot_pass_reset_Sbumit" value="reset_yes">
+	       	  <input type="submit" id="forgot_pass_reset_btn" name="submit" value="Update Password">
 	          <div class="log_in">
 	            <a id="log_in_lnk" href="<?php echo home_url(); ?>">Log in</a> </p>
 	          </div>
