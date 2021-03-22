@@ -150,18 +150,18 @@ $j(document).ready(function(){
   
     $j("#forgot_pass_form").validate({
 	  	rules: {
-	  		user_mail: {
+	  		usermail: {
 		      required: true
 	        }
 	    },
 	    messages: {
-	        user_mail: {
+	        usermail: {
 	            required: "username/e-mail Shouldn't be empty"
 	        }
 	    }
     });
 
-	$j("#reset_pass_form").validate({
+	$j("#forgot_pass_reset_form").validate({
 	  	rules: {
 	  		npass: {
 		      required: true,
@@ -174,12 +174,12 @@ $j(document).ready(function(){
 	    },
 	    messages: {
 	        npass: {
-	            required: "New Password is required",
-	            minlength: "Password must be at least 6 characters"
+	            required: "new password is required",
+	            minlength: "password must be at least 6 characters"
 	        },
 	        cfpass: {
-                required: "Confirm Password is required",
-                minlength: "Password must be at least 6 characters"
+                required: "confirm password is required",
+                minlength: "password must be at least 6 characters"
             }
 	    }
 	});
