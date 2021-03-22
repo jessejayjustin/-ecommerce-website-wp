@@ -128,7 +128,8 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 	       	    <input class="required" id="cfpass" type="password" name="cfpass" value="">
 	       	  </div>
 	       	  <input type="hidden" name="forgot_pass_reset_Sbumit" value="reset_yes">
-	       	  <input type="submit" id="forgot_pass_reset_btn" name="submit" value="Update Password">
+	       	  <input type="submit" id="forgot_pass_reset_btn" name="submit" value="Update Password"><br><br>
+	       	  <br><br>
 	          <div class="log_in">
 	            <a id="log_in_lnk" href="<?php echo home_url(); ?>">Log in</a> </p>
 	          </div>
