@@ -1,4 +1,4 @@
-#reset_pass_banner {
+.forgot-pass-reset-container {
   background:url("../images/night-city.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -20,7 +20,7 @@
   min-height: 100%;
 }
 
-#reset_pass_form {
+#forgot_pass_reset_form {
 	width: 32em;
 	height: auto;
 	background-color: #fff;
@@ -32,7 +32,30 @@
   border-left: 6px solid violet;
 }
 
-.reset_form_cpass label {
+.forgot_pass_reset_cpass label {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-left: 19px;
+  line-height: 16px;
+}
+
+.forgot_pass_reset_cpass input {
+  width: 27rem;
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  margin-left: 19px;
+}
+
+.forgot_pass_reset_cpass input:focus {
+  outline-width: 0;
+}
+
+.forgot_pass_reset_npass label {
   display: flex;
   justify-content: flex-start;
   font-size: 13px;
@@ -42,7 +65,7 @@
   line-height: 16px;
 }
 
-.reset_form_cpass input {
+.forgot_pass_reset_npass input {
   width: 27rem;
   height: 36px;
   font-size: 22px;
@@ -51,11 +74,11 @@
   margin-left: 19px;
 }
 
-.reset_form_cpass input:focus {
+.forgot_pass_reset_npass input:focus {
   outline-width: 0;
 }
 
-.reset_form_npass label {
+.forgot_pass_reset_cfpass label {
   display: flex;
   justify-content: flex-start;
   font-size: 13px;
@@ -65,7 +88,7 @@
   line-height: 16px;
 }
 
-.reset_form_npass input {
+.forgot_pass_reset_cfpass input {
   width: 27rem;
   height: 36px;
   font-size: 22px;
@@ -74,34 +97,11 @@
   margin-left: 19px;
 }
 
-.reset_form_npass input:focus {
+.forgot_pass_reset_cfpass input:focus {
   outline-width: 0;
 }
 
-.reset_form_cfpass label {
-  display: flex;
-  justify-content: flex-start;
-  font-size: 13px;
-  font-weight: 400;
-  margin-top: 20px;
-  margin-left: 19px;
-  line-height: 16px;
-}
-
-.reset_form_cfpass input {
-  width: 27rem;
-  height: 36px;
-  font-size: 22px;
-  border: 1px solid #999;
-  border-radius: 4px;
-  margin-left: 19px;
-}
-
-.reset_form_cfpass input:focus {
-  outline-width: 0;
-}
-
-#reset_pass_btn {
+#forgot_pass_reset_btn {
   margin-top: 30px;
   border-radius: 4px;
   font-size: 13px;
@@ -143,4 +143,14 @@
 .form-errors {
   font-size: 13px;
 }
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf'); 
+  src: local(''),
+       url('http://localhost/wordpress/wp-content/themes/xyz-market/fonts/NotoSans/NotoSans-Regular.ttf') format('truetype') 
+}
+
 
