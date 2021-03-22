@@ -35,7 +35,7 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 				$errors[] = 'password does not match';
 			} 
 			if(empty($errors)){
-				wp_set_password( $npass, $current_user->ID );
+				wp_set_password($npass, $current_user->ID);
 				$_SESSION['success'] = array("password successfully changed!");
 				//echo '<h2>Password successfully changed!</h2>';
 			} else {
