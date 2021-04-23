@@ -1,1 +1,1 @@
-# Ecommerce Website WP Woocommerce sample 1
+# eCommerce Website WP Woocommerce sample 1
