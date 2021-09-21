@@ -1,1 +1,1 @@
-# eCommerce Website WordPress Woocommerce 
+# eCommerce Website WP Woocommerce Plugin
